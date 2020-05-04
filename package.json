@@ -9,10 +9,12 @@
   },
   "dependencies": {
     "@sendgrid/mail": "^7.1.0",
+    "@slack/bolt": "^2.0.1",
     "@types/uuid": "^7.0.3",
     "canvas-confetti": "^1.2.0",
     "faunadb": "^2.13.1",
-    "next": "9.3.6",
+    "next": "latest",
+    "node-fetch": "^2.6.0",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "uuid": "^8.0.0"

@@ -5,8 +5,7 @@ export default () => {
     <Layout>
       <div>
         <h1>Success!</h1>
-        🚀 You've requested office hours! We'll get back to you as soon as
-        possible. 🚀
+        🚀 You've done the thing! Check your email soon! 🚀
         <style jsx>{`
           div {
             margin: 0 auto;

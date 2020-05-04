@@ -1,15 +1,18 @@
-import Head from "next/head";
-import { TextField, Button, TextAreaField } from "../lib/ui";
+import { TextField, Button, TextAreaField, Well } from "../lib/ui";
 import { useState } from "react";
 import { useRouter } from "next/router";
 import confetti from "canvas-confetti";
 import Layout from "../lib/Layout";
+import useLocalStorage from "../lib/useLocalStorage";
 
 function Main() {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [description, setDescription] = useState("");
+  // Uses local storage so if you leave and come back you don't
+  // lose your work.
+  const [name, setName] = useLocalStorage("req-name", "");
+  const [email, setEmail] = useLocalStorage("req-email", "");
+  const [description, setDescription] = useLocalStorage("req-description", "");
   const [isLoading, setIsLoading] = useState(false);
+
   const router = useRouter();
 
   async function submit() {
@@ -32,15 +35,20 @@ function Main() {
       return;
     }
 
+    // Reset description when we're done so someone
+    // can request office hours again.
+    setDescription("");
+    // NOTE: That we keep the name and email so
+    // someone doesn't have to type it in again
+    // when they request again.
+
+    router.replace("/success");
+
     confetti({
       particleCount: 100,
       spread: 70,
       origin: { y: 0.6 },
     });
-
-    setTimeout(() => {
-      router.replace("/success");
-    }, 300);
   }
 
   return (
@@ -59,7 +67,6 @@ function Main() {
         type="name"
         onChange={(e) => setName(e.target.value)}
         placeholder={"Smiles McGeeswellington"}
-        hint="Fear not, we delete this after 14 days for your privacy."
       />
 
       <TextField
@@ -68,7 +75,7 @@ function Main() {
         type="email"
         onChange={(e) => setEmail(e.target.value)}
         placeholder={"smiles@mcgeeswellingtonthewebsite.com"}
-        hint="Fear not, we delete this after 14 days for your privacy."
+        hint="Fear not, we delete this from the server after 14 days for your privacy."
       />
 
       <TextAreaField

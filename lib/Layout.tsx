@@ -15,9 +15,9 @@ export default function Layout({ children }) {
       <style jsx>
         {`
           .florish {
-            height: 24px;
+            height: 8px;
             background: #f8a5c2;
-            border-bottom: 4px solid #f78fb3;
+            border-bottom: 4px dashed #f78fb3;
             width: 100%;
           }
 

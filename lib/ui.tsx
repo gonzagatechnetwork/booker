@@ -4,6 +4,7 @@ import {
   HTMLAttributes,
   InputHTMLAttributes,
   ChangeEvent,
+  CSSProperties,
 } from "react";
 import Spinner from "./spinner";
 
@@ -398,6 +399,69 @@ export const TextAreaField = (props: {
           padding-top: 6px;
           color: #89888e;
           font-size: 14px;
+        }
+      `}</style>
+    </div>
+  );
+};
+
+export const Well = ({
+  children,
+  style,
+}: {
+  children;
+  style?: CSSProperties;
+}) => {
+  return (
+    <div className="behind" style={style}>
+      {children}
+      <style jsx>{`
+        .behind {
+          background: #f4f3fc;
+          padding: 24px;
+          border-radius: 8px;
+        }
+      `}</style>
+    </div>
+  );
+};
+
+import React, { useEffect, useState } from "react";
+
+export const FadeIn = ({
+  children,
+  show,
+  style,
+  className,
+  delay,
+}: {
+  show?: boolean;
+  children: any;
+  style?: any;
+  className?: string;
+  delay?: number;
+}) => {
+  let internalShowing = show === undefined ? true : show;
+
+  const [opacity, setOpacity] = useState(0.0);
+  useEffect(() => {
+    setTimeout(() => {
+      if (internalShowing) {
+        setOpacity(1.0);
+      } else {
+        setOpacity(0.0);
+      }
+    }, delay || 0);
+  }, [show]); // since FadeIn needs to recompute each time. // otherwise you'll cause an incredibly painful performance problem // VERY IMPORTANT, use "show" not "internalShowing" //
+
+  return (
+    <div className={`fade-in ${className || ""}`} style={style}>
+      {children}
+      <style jsx>{`
+        .fade-in {
+          opacity: ${opacity};
+          transition: opacity 0.25s;
+          height: 100%;
         }
       `}</style>
     </div>
