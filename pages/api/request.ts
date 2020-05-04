@@ -14,7 +14,7 @@ async function createRequest(request: OfficeHoursRequest) {
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   const { author, body, email } = req.body;
   if (!author || !body || !email) {
-    throw new Error("Bad req body in /api/request");
+    throw new Error(`Bad req body in /api/request ${JSON.stringify(req.body)}`);
   }
 
   const id = uuid();

@@ -8,7 +8,9 @@
     "start": "next start"
   },
   "dependencies": {
+    "@sendgrid/mail": "^7.1.0",
     "@types/uuid": "^7.0.3",
+    "canvas-confetti": "^1.2.0",
     "faunadb": "^2.13.1",
     "next": "9.3.6",
     "react": "16.13.1",
