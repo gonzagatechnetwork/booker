@@ -1,3 +1,9 @@
-export default () => {
-  return <div>Something went wrong oh nooooooo lol</div>;
-};
+import Layout from "../lib/Layout";
+
+export default function Home() {
+  return (
+    <Layout>
+      <p>Ohhhh nooo something went wrong</p>
+    </Layout>
+  );
+}

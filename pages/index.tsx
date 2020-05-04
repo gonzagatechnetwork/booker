@@ -3,6 +3,7 @@ import { TextField, Button, TextAreaField } from "../lib/ui";
 import { useState } from "react";
 import { useRouter } from "next/router";
 import confetti from "canvas-confetti";
+import Layout from "../lib/Layout";
 
 function Main() {
   const [name, setName] = useState("");
@@ -106,54 +107,8 @@ function Main() {
 
 export default function Home() {
   return (
-    <div className="container">
-      <Head>
-        <title>Booker Bot</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <div className="florish" />
+    <Layout>
       <Main />
-      <div className="footer">Made with ❤️ by the Gonzaga Tech Network</div>
-
-      <style jsx>
-        {`
-          .florish {
-            height: 24px;
-            background: #f8a5c2;
-            border-bottom: 4px solid #f78fb3;
-            width: 100%;
-          }
-
-          .footer {
-            margin: 0 auto;
-            text-align: center;
-            padding: 24px;
-          }
-
-          .container {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-          }
-        `}
-      </style>
-
-      <style jsx global>{`
-        html,
-        body {
-          padding: 0;
-          margin: 0;
-          font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
-            Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
-            sans-serif;
-        }
-
-        * {
-          box-sizing: border-box;
-        }
-      `}</style>
-    </div>
+    </Layout>
   );
 }
