@@ -8,8 +8,16 @@
     "start": "next start"
   },
   "dependencies": {
+    "@types/uuid": "^7.0.3",
+    "faunadb": "^2.13.1",
     "next": "9.3.6",
     "react": "16.13.1",
-    "react-dom": "16.13.1"
+    "react-dom": "16.13.1",
+    "uuid": "^8.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^13.13.4",
+    "@types/react": "^16.9.34",
+    "typescript": "^3.8.3"
   }
 }
