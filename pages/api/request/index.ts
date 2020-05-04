@@ -13,7 +13,7 @@ async function createRequest(request: OfficeHoursRequest) {
 }
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
-  if (req.method === "GET") {
+  if (req.method !== "POST") {
     res.statusCode = 404;
     return res.json({ message: "needs a post request" });
   }
@@ -43,8 +43,8 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         text: `${author} has requested office hours. Accept the office hours here: http://localhost:3000/claim/${id}`,
       }),
     }
-  );
-
-  res.statusCode = 200;
-  res.json({ author, body, email, id });
+  ).then(() => {
+    res.statusCode = 200;
+    res.json({ author, body, email, id });
+  });
 };
