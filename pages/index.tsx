@@ -82,8 +82,9 @@ function Main() {
         title="What do you want to talk about?"
         description="This can be technical like 'stuck on launching Heroku', or it can be non-technical like 'launching on product hunt'."
         value={description}
-        placeholder="need help with ..."
+        placeholder="Try to include as much information as you can."
         onChange={(e) => setDescription(e.target.value)}
+        hint="If this is a technical request, don't forget to include the language and technologies you're using."
       />
 
       <div>
