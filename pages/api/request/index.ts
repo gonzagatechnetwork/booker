@@ -33,7 +33,8 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
   // Send a slack message to counselors.
   fetch(
-    "https://hooks.slack.com/services/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",
+    // Split to prevent crawlers
+    "https://hooks.slack.com/services/"+ "T012K52R811/B012WUBEL8M" + "/mJQaWfWUu2e68zjYVM06tcgH",
     {
       method: "POST",
       headers: {
