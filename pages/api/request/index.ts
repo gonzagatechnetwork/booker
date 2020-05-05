@@ -31,10 +31,17 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     id,
   });
 
+  // Skip slack message in dev
+  if (process.env.NODE_ENV === "development") {
+    res.statusCode = 200;
+    res.json({ author, body, email, id });
+    return;
+  }
+
   // Send a slack message to counselors.
   fetch(
     // Split to prevent crawlers
-    "https://hooks.slack.com/services/"+ "T012K52R811/B012WUBEL8M" + "/mJQaWfWUu2e68zjYVM06tcgH",
+    process.env.SLACK_WEBHOOK,
     {
       method: "POST",
       headers: {

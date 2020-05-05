@@ -1,6 +1,7 @@
 {
   "env": {
     "SENDGRID_API_KEY": "@gtn-sendgrid",
-    "FAUNA_SECRET": "@gtn-fauna"
+    "FAUNA_SECRET": "@gtn-fauna",
+    "SLACK_WEBHOOK": "@gtn-slack-webhook"
   }
 }
