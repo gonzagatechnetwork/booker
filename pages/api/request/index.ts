@@ -40,7 +40,33 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        text: `${author} has requested office hours. Accept the office hours here: http://localhost:3000/claim/${id}`,
+        blocks: [
+          {
+            type: "section",
+            text: {
+              type: "mrkdwn",
+              text: `*${author}* has requested office hours!`,
+            },
+          },
+          {
+            type: "section",
+            text: {
+              type: "mrkdwn",
+              text: `*Message*\n> ${body}`,
+            },
+          },
+          {
+            type: "section",
+            text: {
+              type: "mrkdwn",
+              text: `<https://booker.gonzagatech.network/claim/${id}|Click here to accept.>`,
+            },
+          },
+        ],
+        text: `${author} has requested office hours. Accept the office hours here: https://booker.gonzagatech.network/claim/${id}.
+
+What they're looking to talk about:
+${body}`,
       }),
     }
   ).then(() => {
