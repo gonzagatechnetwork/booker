@@ -30,7 +30,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   // In production, email the two
   if (process.env.NODE_ENV === "production") {
     sgMail.setApiKey(process.env.SENDGRID_API_KEY);
-    sgMail.send({
+    await sgMail.send({
       to: email,
       // Split up to avoid spammers on github, please keep it like this.
       from: "evan" + "@" + "room" + "service" + ".dev",
