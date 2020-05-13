@@ -53,7 +53,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
             type: "section",
             text: {
               type: "mrkdwn",
-              text: `*${author}* has requested office hours!`,
+              text: `@channel *${author}* has requested office hours!`,
             },
           },
           {
